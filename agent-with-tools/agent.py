@@ -77,9 +77,9 @@ def handle_tool_calls(tool_calls, messages):
         else:
             try:
                 result = TOOL_REGISTRY[name](**args)
-            except TypeError as e:
+            except Exception as e:
                 result = (
-                    f"错误：工具 '{name}' 的参数无效：{e}。"
+                    f"错误：工具 '{name}' 执行失败：{type(e).__name__}: {e}。"
                     "请检查工具 Schema 并使用正确的参数重试。"
                 )
 
