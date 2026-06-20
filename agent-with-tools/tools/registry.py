@@ -21,13 +21,13 @@ def get_tool_schemas():
             "type": "function",
             "function": {
                 "name": "run_bash",
-                "description": "Run a bash command on the user's machine and return the output.",
+                "description": "在用户机器上执行一条 bash 命令并返回输出。",
                 "parameters": {
                     "type": "object",
                     "properties": {
                         "command": {
                             "type": "string",
-                            "description": "The bash command to execute.",
+                            "description": "要执行的 bash 命令。",
                         }
                     },
                     "required": ["command"],
@@ -38,13 +38,13 @@ def get_tool_schemas():
             "type": "function",
             "function": {
                 "name": "read_file",
-                "description": "Read lines from a file. Returns lines prefixed with line numbers.",
+                "description": "读取文件中的若干行，返回带行号前缀的内容。",
                 "parameters": {
                     "type": "object",
                     "properties": {
-                        "path": {"type": "string", "description": "Absolute or relative path to the file."},
-                        "offset": {"type": "integer", "description": "First line to read (1-indexed). Defaults to 1."},
-                        "limit": {"type": "integer", "description": "Maximum number of lines to return. Defaults to 200."},
+                        "path": {"type": "string", "description": "文件的绝对路径或相对路径。"},
+                        "offset": {"type": "integer", "description": "起始行号（从 1 开始），默认为 1。"},
+                        "limit": {"type": "integer", "description": "最大返回行数，默认为 200。"},
                     },
                     "required": ["path"],
                 },
@@ -54,12 +54,12 @@ def get_tool_schemas():
             "type": "function",
             "function": {
                 "name": "glob_files",
-                "description": "Find files matching a glob pattern (e.g. '**/*.py') inside a directory.",
+                "description": "在目录中查找匹配 glob 模式的文件（例如 '**/*.py'）。",
                 "parameters": {
                     "type": "object",
                     "properties": {
-                        "pattern": {"type": "string", "description": "Glob pattern to match against file names."},
-                        "path": {"type": "string", "description": "Root directory to search in. Defaults to '.'."},
+                        "pattern": {"type": "string", "description": "用于匹配文件名的 glob 模式。"},
+                        "path": {"type": "string", "description": "搜索的根目录，默认为 '.'。"},
                     },
                     "required": ["pattern"],
                 },
@@ -69,13 +69,13 @@ def get_tool_schemas():
             "type": "function",
             "function": {
                 "name": "grep",
-                "description": "Search file contents for a regex pattern and return matching lines with file paths and line numbers.",
+                "description": "搜索文件内容中的正则表达式模式，返回匹配行及其文件路径和行号。",
                 "parameters": {
                     "type": "object",
                     "properties": {
-                        "pattern": {"type": "string", "description": "Regular expression to search for."},
-                        "path": {"type": "string", "description": "Directory to search in. Defaults to '.'."},
-                        "include": {"type": "string", "description": "Filename glob to restrict which files are searched (e.g. '*.py'). Defaults to '*'."},
+                        "pattern": {"type": "string", "description": "要搜索的正则表达式。"},
+                        "path": {"type": "string", "description": "搜索的目录，默认为 '.'。"},
+                        "include": {"type": "string", "description": "按文件名 glob 过滤搜索文件（例如 '*.py'），默认为 '*'。"},
                     },
                     "required": ["pattern"],
                 },
@@ -85,12 +85,12 @@ def get_tool_schemas():
             "type": "function",
             "function": {
                 "name": "write_file",
-                "description": "Write content to a file, creating it (and any missing parent directories) if it does not exist.",
+                "description": "将内容写入文件，如果文件（或缺失的父目录）不存在则自动创建。",
                 "parameters": {
                     "type": "object",
                     "properties": {
-                        "path": {"type": "string", "description": "Path of the file to write."},
-                        "content": {"type": "string", "description": "Full content to write to the file."},
+                        "path": {"type": "string", "description": "要写入的文件路径。"},
+                        "content": {"type": "string", "description": "要写入文件的完整内容。"},
                     },
                     "required": ["path", "content"],
                 },
@@ -100,13 +100,13 @@ def get_tool_schemas():
             "type": "function",
             "function": {
                 "name": "edit_file",
-                "description": "Replace the first occurrence of a string in a file with a new string.",
+                "description": "替换文件中第一个出现的 old_string 为 new_string。",
                 "parameters": {
                     "type": "object",
                     "properties": {
-                        "path": {"type": "string", "description": "Path of the file to edit."},
-                        "old_string": {"type": "string", "description": "Exact string to find and replace."},
-                        "new_string": {"type": "string", "description": "String to replace it with."},
+                        "path": {"type": "string", "description": "要编辑的文件路径。"},
+                        "old_string": {"type": "string", "description": "要查找和替换的精确字符串。"},
+                        "new_string": {"type": "string", "description": "用于替换的新字符串。"},
                     },
                     "required": ["path", "old_string", "new_string"],
                 },
@@ -117,12 +117,12 @@ def get_tool_schemas():
             "function": {
                 "name": "webfetch",
                 "description": (
-                    "Fetch a public URL (http/https only) and return its full plain-text content (up to 2 MB)."
+                    "获取一个公开 URL（仅 http/https）并返回其完整的纯文本内容（最大 2 MB）。"
                 ),
                 "parameters": {
                     "type": "object",
                     "properties": {
-                        "url": {"type": "string", "description": "The URL to fetch (http/https)."},
+                        "url": {"type": "string", "description": "要获取的 URL（http/https）。"},
                     },
                     "required": ["url"],
                 },
