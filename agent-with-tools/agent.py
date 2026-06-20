@@ -75,7 +75,13 @@ def handle_tool_calls(tool_calls, messages):
         if name not in TOOL_REGISTRY:
             result = f"错误：未知工具 '{name}'。可用工具：{list(TOOL_REGISTRY.keys())}"
         else:
-            result = TOOL_REGISTRY[name](**args)
+            try:
+                result = TOOL_REGISTRY[name](**args)
+            except TypeError as e:
+                result = (
+                    f"错误：工具 '{name}' 的参数无效：{e}。"
+                    "请检查工具 Schema 并使用正确的参数重试。"
+                )
 
         print(f"  [工具结果] {result[:200]}{'...' if len(result) > 200 else ''}")
 
@@ -93,8 +99,8 @@ def agent_loop(client):
         {
             "role": "system",
             "content": (
-                "You are a helpful assistant. You have tools to read and write files, "
-                "search the file system, and fetch web pages. Use them to help the user."
+                "你是一个乐于助人的助手。你可以读写文件、搜索文件系统和浏览网页。"
+                "请使用这些工具来帮助用户。"
             ),
         }
     ]
