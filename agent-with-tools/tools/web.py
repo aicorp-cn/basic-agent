@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 
 
 def webfetch(url: str) -> str:
-    """获取 URL 的完整纯文本内容（最大 2 MB）。"""
+    """获取 URL 的完整纯文本内容"""
     try:
         parsed = urlparse(url)
         if parsed.scheme not in ("http", "https"):

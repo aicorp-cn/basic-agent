@@ -2,7 +2,7 @@ import subprocess
 
 
 def run_bash(command: str) -> str:
-    """执行 bash 命令并返回其输出。"""
+    """执行 bash 命令并返回其输出"""
     result = subprocess.run(
         command, shell=True, text=True, capture_output=True
     )

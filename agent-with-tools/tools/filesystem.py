@@ -4,7 +4,7 @@ from pathlib import Path
 
 _CWD = Path.cwd().resolve()
 
-
+# Path
 def _resolve_path(path: str) -> str:
     """解析路径并确保其位于当前工作目录内。"""
     p = Path(path)

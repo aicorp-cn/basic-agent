@@ -2,7 +2,7 @@ from tools.filesystem import read_file, glob_files, grep, write_file, edit_file
 from tools.shell import run_bash
 from tools.web import webfetch
 
-
+# get tools
 def get_tool_registry():
     return {
         "run_bash":   run_bash,

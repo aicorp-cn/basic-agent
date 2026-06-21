@@ -15,13 +15,13 @@ from openai import OpenAI
 # ========================================
 
 # 云端模式：设置 API Key 后将自动使用云端模式，否则使用本地 Ollama
-# OPENAI_API_KEY = "sk-xxx"
+#OPENAI_API_KEY = "sk-xxxxxx"
 
 # API 基础地址（本地 Ollama 默认 http://localhost:11434/v1）
-# OPENAI_BASE_URL = "http://localhost:11434/v1"
+#OPENAI_BASE_URL = "https://api.deepseek.com"
 
-# 模型名称（本地默认 llama3.1:8b，云端默认 gpt-4o）
-# LLM_MODEL = "llama3.1:8b"
+# 模型名称（本地默认 llama3.1:8b，云端默认 deepseek-v4-flash）
+# LLM_MODEL = "deepseek-v4-flash"
 
 # 温度参数（0.0 - 2.0，默认 0.7）
 # LLM_TEMPERATURE = 0.7

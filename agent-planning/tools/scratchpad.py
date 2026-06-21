@@ -1,12 +1,12 @@
 class Scratchpad:
-    """Read and write from a in-memory scratchpad"""
+    """读写内存中的草稿本"""
 
     def __init__(self):
         self._content = ""
 
     def read(self) -> str:
         if self._content == "":
-            return "(empty)"
+            return "(空)"
         return self._content
 
     def write(self, content: str) -> str:
@@ -18,14 +18,13 @@ scratchpad = Scratchpad()
 
 
 def read_scratchpad():
-    """Read the contents of the scratchpad"""
+    """读取草稿本的内容"""
     return scratchpad.read()
 
 
 def write_scratchpad(content: str):
     """
-    Write into the scratchpad. The previous content
-    will be overwritten.
+    写入草稿本。之前的内容将被覆盖。
     """
     scratchpad.write(content)
-    return "Successfully written content into scratchpad"
+    return "成功将内容写入草稿本"
